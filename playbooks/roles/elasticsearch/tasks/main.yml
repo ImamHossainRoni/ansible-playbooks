@@ -36,11 +36,25 @@
     mode: 0750
   notify: restart elasticsearch
 
+- name: Set bootstrap password
+  shell: echo "{{ elasticsearch_password }}" | elasticsearch-keystore add -x 'bootstrap.password'
+
 - name: Start Elasticsearch
   service:
     name: elasticsearch
     state: started
     enabled: yes
+
+- name: Setup password for user kibana_system
+  uri:
+    url: "{{ es_api_uri }}/{{ es_security_api }}/user/kibana_system/_password"
+    method: POST
+    body_format: json
+    body: "{ \"password\":\"{{ elasticsearch_password }}\" }"
+    status_code: 200
+    user: "kibana"
+    password: "{{ elasticsearch_password }}"
+    force_basic_auth: yes
 
 - name: Open Elasticsearch ports on the firewall
   ufw:

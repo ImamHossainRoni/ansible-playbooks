@@ -12,3 +12,6 @@ elasticsearch_http_port: 9200
 
 elasticsearch_script_inline: true
 elasticsearch_script_indexed: true
+
+elasticsearch_username: elastic
+elasticsearch_password: null
