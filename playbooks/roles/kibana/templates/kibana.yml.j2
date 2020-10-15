@@ -3,3 +3,5 @@ server:
 
 elasticsearch.password: {{ kibana_elasticsearch_password }}
 xpack.encryptedSavedObjects.encryptionKey: {{ kibana_encryption_key }}
+
+elasticsearch.ssl.certificateAuthorities: ["{{ elasticsearch_pem_file }}"]
