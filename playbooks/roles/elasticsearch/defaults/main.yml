@@ -5,6 +5,7 @@ elasticsearch_package: elasticsearch
 
 elasticsearch_data_dir: /usr/share/elasticsearch/data
 elasticsearch_cfg_dir: /usr/share/elasticsearch/config
+elasticsearch_bin_dir: /usr/share/elasticsearch/bin
 elasticsearch_log_dir: /var/log/elasticsearch
 
 elasticsearch_network_host: localhost
@@ -13,5 +14,7 @@ elasticsearch_http_port: 9200
 elasticsearch_script_inline: true
 elasticsearch_script_indexed: true
 
+es_api_uri: "http://{{ elasticsearch_network_host }}:{{ elasticsearch_http_port }}"
 elasticsearch_username: elastic
 elasticsearch_password: null
+elasticsearch_keystore: null

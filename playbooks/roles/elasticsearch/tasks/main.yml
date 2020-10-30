@@ -28,6 +28,14 @@
     - "{{ elasticsearch_log_dir }}"
     - "{{ elasticsearch_cfg_dir }}"
 
+- name: Install Elasticsearch certificates
+  copy:
+    content: "{{ elasticsearch_keystore | b64decode }}"
+    dest: "{{ elasticsearch_cfg_dir }}/http.p12"
+    owner: elasticsearch
+    group: elasticsearch
+    mode: 0750
+
 - name: Configure Elasticsearch
   template:
     src: elasticsearch.yml.j2
@@ -37,7 +45,7 @@
   notify: restart elasticsearch
 
 - name: Set bootstrap password
-  shell: echo "{{ elasticsearch_password }}" | elasticsearch-keystore add -x 'bootstrap.password'
+  shell: echo "{{ elasticsearch_password }}" | {{ elasticsearch_bin_dir }}/elasticsearch-keystore add -x 'bootstrap.password'
 
 - name: Start Elasticsearch
   service:
@@ -47,7 +55,7 @@
 
 - name: Setup password for user kibana_system
   uri:
-    url: "{{ es_api_uri }}/{{ es_security_api }}/user/kibana_system/_password"
+    url: "{{ es_api_uri }}/_security/user/kibana_system/_password"
     method: POST
     body_format: json
     body: "{ \"password\":\"{{ elasticsearch_password }}\" }"
