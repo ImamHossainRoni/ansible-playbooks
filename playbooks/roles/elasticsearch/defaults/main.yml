@@ -8,7 +8,7 @@ elasticsearch_cfg_dir: /usr/share/elasticsearch/config
 elasticsearch_bin_dir: /usr/share/elasticsearch/bin
 elasticsearch_log_dir: /var/log/elasticsearch
 
-elasticsearch_network_host: localhost
+elasticsearch_network_host: 127.0.0.1
 elasticsearch_http_port: 9200
 
 elasticsearch_script_inline: true
