@@ -33,7 +33,7 @@
     dest: "{{ kibana_config_dir }}/elasticsearch-ca.pem"
     owner: kibana
     group: kibana
-    mode: 0750
+    mode: 0640
 
 - name: Configure Kibana
   template:
