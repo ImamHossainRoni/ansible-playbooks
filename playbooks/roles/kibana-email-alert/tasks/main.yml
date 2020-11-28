@@ -3,13 +3,13 @@
 
 - name: Copy alert script
   template:
-    src: "kibana_email_alert.sh"
+    src: "kibana_email_alert.sh.j2"
     dest: "/usr/local/sbin/kibana_email_alert.sh"
     mode: u+x
 
 - name: Copy systemd service file
   template:
-    src: "kibana_email_alert.service"
+    src: "kibana_email_alert.service.j2"
     dest: "/etc/systemd/system/kibana_email_alert.service"
 
 - name: Enable and start the systemd service to start on boot automatically
