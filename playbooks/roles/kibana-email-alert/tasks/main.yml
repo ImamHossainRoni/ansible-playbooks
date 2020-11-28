@@ -5,7 +5,7 @@
   template:
     src: "kibana_email_alert.sh.j2"
     dest: "/usr/local/sbin/kibana_email_alert.sh"
-    mode: u+x
+    mode: a+x
 
 - name: Copy systemd service file
   template:
