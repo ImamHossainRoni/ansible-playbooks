@@ -6,7 +6,11 @@ alert to specified email address.
 
 Role Variables
 --------------
-KIBANA_EMAIL_ALERT_TO_EMAIL - Which email address to use when sending alert
+kibana_email_alert_regex - what to match in journald log
+
+kibana_email_alert_to - which email to send alert
+
+kibana_email_alert_subject - email subject
 
 Dependencies
 ------------
