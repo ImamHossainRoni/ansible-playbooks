@@ -1,7 +1,7 @@
 ---
 
 # what to match in journald log
-kibana_email_alert_regex: "Server log"
+kibana_email_alert_regex: "\"type\":\"log\".+\"tags\".+\"actions\".+Server log:"
 
 # which email to send alert
 kibana_email_alert_to: null
